@@ -2,8 +2,10 @@ package com.example.taskMaster;
 
 import com.example.taskMaster.adapter.repository.IConnection;
 import com.example.taskMaster.adapter.repository.PostgreSqlAdapter;
+import com.example.taskMaster.application.domain.builder.TaskBuilder;
+import com.example.taskMaster.application.domain.builder.TaskBuilderImpl;
 import com.example.taskMaster.application.usecase.CreateTask;
-import com.example.taskMaster.application.usecase.GetTask;
+import com.example.taskMaster.application.usecase.GetToDoList;
 import com.example.taskMaster.infra.repository.IRepository;
 import com.example.taskMaster.infra.repository.TaskRepositoryDatabase;
 import org.junit.jupiter.api.Assertions;
@@ -17,10 +19,22 @@ public class CreateTaskTest {
     void mustCreateATask() {
         IConnection connection = new PostgreSqlAdapter();
         IRepository repository = new TaskRepositoryDatabase(connection);
-        new CreateTask(repository).execute();
+        TaskBuilder builder = new TaskBuilderImpl();
+        var result = new CreateTask(repository, builder).execute();
 
-        var task = new GetTask(repository).execute();
+        Assertions.assertNotNull(result);
+    }
 
-        Assertions.assertNotNull(task.getId());
+
+    @Test
+    @DisplayName("must search for tasks")
+    void mustSearchForTask() {
+        IConnection connection = new PostgreSqlAdapter();
+        IRepository repository = new TaskRepositoryDatabase(connection);
+        var result = new GetToDoList(repository).execute();
+
+        System.out.println(result.toString());
+
+        Assertions.assertNotNull(result.getFirst());
     }
 }
