@@ -31,7 +31,8 @@ public class CreateTaskTest {
     void mustSearchForTask() {
         IConnection connection = new PostgreSqlAdapter();
         IRepository repository = new TaskRepositoryDatabase(connection);
-        var result = new GetToDoList(repository).execute();
+        TaskBuilder builder = new TaskBuilderImpl();
+        var result = new GetToDoList(repository, builder).execute();
 
         System.out.println(result.toString());
 

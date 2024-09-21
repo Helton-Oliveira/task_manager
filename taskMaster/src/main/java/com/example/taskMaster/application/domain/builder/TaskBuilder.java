@@ -6,10 +6,11 @@ import com.example.taskMaster.application.domain.components.Status;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 public interface TaskBuilder {
     Task getTask();
-    void setId();
+    void setId(UUID id);
     void setNameTask(String nameTask);
     void setStatus(Status status);
     void setDescription(String description);

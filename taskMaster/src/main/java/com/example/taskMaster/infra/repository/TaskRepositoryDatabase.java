@@ -1,11 +1,10 @@
 package com.example.taskMaster.infra.repository;
 
 import com.example.taskMaster.adapter.repository.IConnection;
+import com.example.taskMaster.application.domain.builder.TaskBuilder;
 import com.example.taskMaster.application.domain.components.Priority;
 import com.example.taskMaster.application.domain.components.Status;
 import com.example.taskMaster.application.domain.entities.Task;
-import com.example.taskMaster.application.domain.entities.abstractions.RebuildTask;
-import com.example.taskMaster.application.domain.entities.abstractions.RebuildTaskImpl;
 
 import java.sql.Date;
 import java.sql.SQLException;
@@ -55,20 +54,21 @@ public class TaskRepositoryDatabase implements IRepository {
     }
 
     @Override
-    public List<Task> getAll(RebuildTask rebuildTask) {
+    public List<Task> getAll(TaskBuilder builder) {
         List<Task> taskList = new ArrayList<>();
 
         try {
             var st = connection.query("SELECT * FROM tasks").executeQuery();
             while (st.next()) {
-                taskList.add( rebuildTask.rebuild((UUID) st.getObject("id"),
-                        st.getString("nametask"),
-                        st.getString("description"),
-                        Status.valueOf(st.getString("status")),
-                        Priority.valueOf(st.getString("priority")),
-                        st.getDate("duedate").toLocalDate(),
-                        st.getTimestamp("createdat").toLocalDateTime()
-                ));
+                       builder.setId( (UUID) st.getObject("id"));
+                       builder.setNameTask(st.getString("nametask"));
+                       builder.setDescription(st.getString("description"));
+                       builder.setStatus(Status.valueOf(st.getString("status")));
+                       builder.setPriority(Priority.valueOf(st.getString("priority")));
+                       builder.setDueDate(st.getDate("duedate").toLocalDate());
+                       builder.setCreatedAt(st.getTimestamp("createdat").toLocalDateTime());
+
+                       taskList.add(builder.getTask());
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());

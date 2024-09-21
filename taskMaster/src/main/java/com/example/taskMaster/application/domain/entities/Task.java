@@ -16,24 +16,8 @@ public class Task {
     private LocalDate dueDate;
     private LocalDateTime createdAt; //
 
-    public Task(){};
-
-    private Task(UUID id, String nameTask, Status status, String description, Priority priority, LocalDate dueDate, LocalDateTime createdAt) {
+    public void setId(UUID id) {
         this.id = id;
-        this.nameTask = nameTask;
-        this.status = status;
-        this.description = description;
-        this.priority = priority;
-        this.dueDate = dueDate;
-        this.createdAt = createdAt;
-    }
-
-    public static Task rebuild(UUID id, String nameTask, Status status, String description, Priority priority, LocalDate dueDate, LocalDateTime createdAt) {
-        return new Task(id, nameTask, status, description, priority, dueDate, createdAt);
-    }
-
-    public void setId() {
-        this.id = UUID.randomUUID();
     }
 
     public LocalDate getDueDate() {

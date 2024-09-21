@@ -6,6 +6,7 @@ import com.example.taskMaster.application.domain.components.Status;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 public class DirectorBuilder implements IDirectorBuilder{
 
@@ -17,7 +18,7 @@ public class DirectorBuilder implements IDirectorBuilder{
 
     @Override
     public void createEasyLevelTask(String nameTask, String description, LocalDate dueDate) {
-        builder.setId();
+        builder.setId(UUID.randomUUID());
         builder.setNameTask(nameTask);
         builder.setDescription(description);
         builder.setStatus(Status.TODO);
@@ -28,7 +29,7 @@ public class DirectorBuilder implements IDirectorBuilder{
 
     @Override
     public void createMediumLevelTask(String nameTask, String description, LocalDate dueDate) {
-        builder.setId();
+        builder.setId(UUID.randomUUID());
         builder.setNameTask(nameTask);
         builder.setDescription(description);
         builder.setStatus(Status.TODO);
@@ -39,7 +40,7 @@ public class DirectorBuilder implements IDirectorBuilder{
 
     @Override
     public void createDifficultLevelTask(String nameTask, String description, LocalDate dueDate) {
-        builder.setId();
+        builder.setId(UUID.randomUUID());
         builder.setNameTask(nameTask);
         builder.setDescription(description);
         builder.setStatus(Status.TODO);

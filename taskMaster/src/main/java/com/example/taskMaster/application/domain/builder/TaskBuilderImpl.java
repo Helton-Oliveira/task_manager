@@ -6,6 +6,7 @@ import com.example.taskMaster.application.domain.components.Status;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 public class TaskBuilderImpl implements TaskBuilder {
 
@@ -18,8 +19,8 @@ public class TaskBuilderImpl implements TaskBuilder {
     }
 
     @Override
-    public void setId() {
-        task.setId();
+    public void setId(UUID id) {
+        task.setId(id);
     }
 
     @Override
