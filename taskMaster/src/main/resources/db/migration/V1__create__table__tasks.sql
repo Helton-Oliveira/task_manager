@@ -1,0 +1,11 @@
+DROP TABLE IF EXISTS tasks CASCADE;
+
+CREATE TABLE tasks (
+    id UUID PRIMARY KEY,
+    nameTask VARCHAR(255) NOT NULL,
+    description VARCHAR(255) NOT NULL,
+    status VARCHAR(255) NOT NULL,
+    priority VARCHAR(255) NOT NULL,
+    dueDate DATE NOT NULL,
+    createdAt TIMESTAMP NOT NULL
+);
