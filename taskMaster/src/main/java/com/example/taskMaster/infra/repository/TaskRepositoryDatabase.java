@@ -1,7 +1,7 @@
 package com.example.taskMaster.infra.repository;
 
 import com.example.taskMaster.adapter.repository.IConnection;
-import com.example.taskMaster.application.domain.builder.TaskBuilder;
+import com.example.taskMaster.application.domain.builderPattern.builder.TaskBuilder;
 import com.example.taskMaster.application.domain.components.Priority;
 import com.example.taskMaster.application.domain.components.Status;
 import com.example.taskMaster.application.domain.entities.Task;
@@ -70,6 +70,7 @@ public class TaskRepositoryDatabase implements IRepository {
 
                        taskList.add(builder.getTask());
             }
+            connection.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

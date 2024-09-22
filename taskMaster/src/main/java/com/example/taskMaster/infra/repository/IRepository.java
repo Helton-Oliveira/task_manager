@@ -1,6 +1,6 @@
 package com.example.taskMaster.infra.repository;
 
-import com.example.taskMaster.application.domain.builder.TaskBuilder;
+import com.example.taskMaster.application.domain.builderPattern.builder.TaskBuilder;
 import com.example.taskMaster.application.domain.entities.Task;
 
 import java.util.List;

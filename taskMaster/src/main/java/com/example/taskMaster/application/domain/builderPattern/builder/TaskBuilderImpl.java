@@ -1,4 +1,4 @@
-package com.example.taskMaster.application.domain.builder;
+package com.example.taskMaster.application.domain.builderPattern.builder;
 
 import com.example.taskMaster.application.domain.entities.Task;
 import com.example.taskMaster.application.domain.components.Priority;

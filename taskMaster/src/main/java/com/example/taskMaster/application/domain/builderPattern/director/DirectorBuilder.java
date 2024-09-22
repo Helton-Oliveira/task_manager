@@ -1,22 +1,32 @@
-package com.example.taskMaster.application.domain.director;
+package com.example.taskMaster.application.domain.builderPattern.director;
 
-import com.example.taskMaster.application.domain.builder.TaskBuilder;
+import com.example.taskMaster.application.domain.builderPattern.builder.TaskBuilder;
+import com.example.taskMaster.application.domain.builderPattern.builder.TaskBuilderImpl;
 import com.example.taskMaster.application.domain.components.Priority;
 import com.example.taskMaster.application.domain.components.Status;
+import com.example.taskMaster.application.domain.entities.Task;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-public class DirectorBuilder implements IDirectorBuilder{
+public class DirectorBuilder {
 
     private final TaskBuilder builder;
 
-    public DirectorBuilder(TaskBuilder builder) {
+    private DirectorBuilder(TaskBuilder builder) {
         this.builder = builder;
     }
 
-    @Override
+    public static DirectorBuilder createDirector() {
+        var builder = new TaskBuilderImpl();
+        return new DirectorBuilder(builder);
+    }
+
+    public Task build() {
+        return this.builder.getTask();
+    }
+
     public void createEasyLevelTask(String nameTask, String description, LocalDate dueDate) {
         builder.setId(UUID.randomUUID());
         builder.setNameTask(nameTask);
@@ -27,7 +37,6 @@ public class DirectorBuilder implements IDirectorBuilder{
         builder.setCreatedAt(LocalDateTime.now());
     }
 
-    @Override
     public void createMediumLevelTask(String nameTask, String description, LocalDate dueDate) {
         builder.setId(UUID.randomUUID());
         builder.setNameTask(nameTask);
@@ -38,7 +47,6 @@ public class DirectorBuilder implements IDirectorBuilder{
         builder.setCreatedAt(LocalDateTime.now());
     }
 
-    @Override
     public void createDifficultLevelTask(String nameTask, String description, LocalDate dueDate) {
         builder.setId(UUID.randomUUID());
         builder.setNameTask(nameTask);

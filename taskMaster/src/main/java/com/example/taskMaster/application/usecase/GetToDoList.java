@@ -1,6 +1,6 @@
 package com.example.taskMaster.application.usecase;
 
-import com.example.taskMaster.application.domain.builder.TaskBuilder;
+import com.example.taskMaster.application.domain.builderPattern.builder.TaskBuilder;
 import com.example.taskMaster.application.domain.entities.Task;
 import com.example.taskMaster.application.usecase.abstractions.IGetToDoList;
 import com.example.taskMaster.infra.repository.IRepository;
