@@ -9,6 +9,7 @@ import com.example.taskMaster.application.domain.entities.Task;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 public class TaskRepositoryInMemory implements IRepository {
@@ -24,15 +25,20 @@ public class TaskRepositoryInMemory implements IRepository {
     }
 
     @Override
-    public Task get() {
+    public Task get(UUID id) {
 
         return null;
     }
 
     @Override
-    public List<Task> getAll(TaskBuilder builder) {
+    public List<Task> getAll() {
         fakeData();
         return taskList;
+    }
+
+    @Override
+    public Boolean update(UUID id, Map<String, String> field) {
+        return null;
     }
 
     private void fakeData() {

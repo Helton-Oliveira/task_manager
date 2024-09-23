@@ -74,14 +74,13 @@ public class Task {
 
     @Override
     public String toString() {
-        return "Task {" +
-                "id: " + id +
-                ", nameTask: " + nameTask + '\'' +
-                ", status: " + status +
-                ", description: " + description + '\'' +
-                ", priority: " + priority +
-                ", dueDate: " + dueDate +
-                ", createdAt: " + createdAt +
-                '}';
+        return "Id: " + this.getId() + "\r\n" +
+               "Name: " + this.getNameTask() + "\r\n" +
+                "Status: " + this.getStatus() + "\r\n" +
+                "Description: " + this.getDescription() + "\r\n" +
+                "Priority: " + this.getPriority() + "\r\n" +
+                "DueDate: " + this.getDueDate() + "\r\n" +
+                "CreatedAt: " + this.getCreatedAt() + "\r\n";
     }
+
 }
