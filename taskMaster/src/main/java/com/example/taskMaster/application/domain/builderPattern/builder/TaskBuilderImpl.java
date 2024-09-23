@@ -19,6 +19,11 @@ public class TaskBuilderImpl implements TaskBuilder {
     }
 
     @Override
+    public void reset() {
+        this.task = new Task();
+    }
+
+    @Override
     public void setId(UUID id) {
         task.setId(id);
     }

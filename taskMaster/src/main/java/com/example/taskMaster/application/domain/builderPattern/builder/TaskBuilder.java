@@ -10,6 +10,7 @@ import java.util.UUID;
 
 public interface TaskBuilder {
     Task getTask();
+    void reset();
     void setId(UUID id);
     void setNameTask(String nameTask);
     void setStatus(Status status);
