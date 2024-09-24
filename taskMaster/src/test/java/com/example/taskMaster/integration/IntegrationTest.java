@@ -12,6 +12,9 @@ import com.example.taskMaster.application.usecase.CreateTask;
 import com.example.taskMaster.application.usecase.GetTask;
 import com.example.taskMaster.application.usecase.GetToDoList;
 import com.example.taskMaster.application.usecase.UpdateTask;
+import com.example.taskMaster.application.usecase.creationValidations.CheckFields;
+import com.example.taskMaster.application.usecase.creationValidations.ICreationValidation;
+import com.example.taskMaster.application.usecase.creationValidations.ValidateDate;
 import com.example.taskMaster.infra.repository.IRepository;
 import com.example.taskMaster.infra.repository.TaskRepositoryDatabase;
 import com.example.taskMaster.infra.repository.TaskRepositoryInMemory;
@@ -19,6 +22,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -33,7 +37,8 @@ public class IntegrationTest {
         TaskBuilder builder = new TaskBuilderImpl();
         IRepository repository = new TaskRepositoryDatabase(connection, builder);
         ICreateByStrategy byStrategy = new CreateByStrategy(new Context());
-        var result = new CreateTask(repository, byStrategy).execute(2, "Ir a academia", "Acordar cedo para ir a academia", "2024-09-23");
+        List<ICreationValidation> validationList = List.of(new ValidateDate(), new CheckFields());
+        var result = new CreateTask(repository, byStrategy, validationList).execute(1, "Dar comida ao cachorro", "Comida para o cachorro", "2024-09-24");
 
         assertThat(result.booleanValue()).isEqualTo(true);
     }
