@@ -1,7 +1,7 @@
-package com.example.taskMaster.application.usecase;
+package com.example.taskMaster.application.usecase.concreteUseCases;
 
 import com.example.taskMaster.application.domain.entities.Task;
-import com.example.taskMaster.application.usecase.abstractions.IGetTask;
+import com.example.taskMaster.application.usecase.abstractionsUseCase.IGetTask;
 import com.example.taskMaster.infra.repository.IRepository;
 
 import java.util.UUID;

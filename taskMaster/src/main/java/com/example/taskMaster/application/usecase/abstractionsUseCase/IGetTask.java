@@ -1,4 +1,4 @@
-package com.example.taskMaster.application.usecase.abstractions;
+package com.example.taskMaster.application.usecase.abstractionsUseCase;
 
 import com.example.taskMaster.application.domain.entities.Task;
 

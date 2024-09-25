@@ -8,17 +8,17 @@ import com.example.taskMaster.application.domain.components.Status;
 import com.example.taskMaster.application.strategy.CreateByStrategy;
 import com.example.taskMaster.application.strategy.ICreateByStrategy;
 import com.example.taskMaster.application.strategy.context.Context;
-import com.example.taskMaster.application.usecase.CreateTask;
-import com.example.taskMaster.application.usecase.GetTask;
-import com.example.taskMaster.application.usecase.GetToDoList;
-import com.example.taskMaster.application.usecase.UpdateTask;
-import com.example.taskMaster.application.usecase.creationValidations.CheckFields;
-import com.example.taskMaster.application.usecase.creationValidations.ICreationValidation;
-import com.example.taskMaster.application.usecase.creationValidations.ValidateDate;
+import com.example.taskMaster.application.usecase.concreteUseCases.CreateTask;
+import com.example.taskMaster.application.usecase.concreteUseCases.GetTask;
+import com.example.taskMaster.application.usecase.concreteUseCases.GetToDoList;
+import com.example.taskMaster.application.usecase.concreteUseCases.UpdateTask;
+import com.example.taskMaster.application.usecase.creationValidations.concreteValidations.CheckFields;
+import com.example.taskMaster.application.usecase.creationValidations.validationAbstractions.ICreationValidation;
+import com.example.taskMaster.application.usecase.creationValidations.concreteValidations.ValidateDate;
+import com.example.taskMaster.application.usecase.updateValidations.validationAbstractions.IUpdateValidation;
+import com.example.taskMaster.application.usecase.updateValidations.concreteValidations.UpdateValidations;
 import com.example.taskMaster.infra.repository.IRepository;
 import com.example.taskMaster.infra.repository.TaskRepositoryDatabase;
-import com.example.taskMaster.infra.repository.TaskRepositoryInMemory;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -74,7 +74,8 @@ public class IntegrationTest {
         IConnection connection = new PostgreSqlAdapter();
         TaskBuilder builder = new TaskBuilderImpl();
         IRepository repository = new TaskRepositoryDatabase(connection, builder);
-        var result = new UpdateTask(repository).execute(UUID.fromString("58235b86-b1e5-4c7c-96e2-e0be26add4e0"), Map.of("status", String.valueOf(Status.COMPLETE)));
+        IUpdateValidation validation = new UpdateValidations();
+        var result = new UpdateTask(repository, validation).execute(UUID.fromString("ae87ad96-697c-4d1f-abe3-32cca8f6bf2f"), Map.of("status", String.valueOf(Status.COMPLETE)));
 
         assertThat(result).isEqualTo("update completed successfully");
     }
@@ -85,7 +86,8 @@ public class IntegrationTest {
         IConnection connection = new PostgreSqlAdapter();
         TaskBuilder builder = new TaskBuilderImpl();
         IRepository repository = new TaskRepositoryDatabase(connection, builder);
-        var result = new UpdateTask(repository).execute(UUID.fromString("34cf2939-a88d-4261-9dc9-92715860ad6a"), Map.of("duedate", "2024-09-24"));
+        IUpdateValidation validation = new UpdateValidations();
+        var result = new UpdateTask(repository, validation).execute(UUID.fromString("34cf2939-a88d-4261-9dc9-92715860ad6a"), Map.of("duedate", "2024-09-24"));
 
         assertThat(result).isEqualTo("update completed successfully");
     }

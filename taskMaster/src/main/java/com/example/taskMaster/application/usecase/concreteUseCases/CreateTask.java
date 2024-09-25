@@ -1,8 +1,8 @@
-package com.example.taskMaster.application.usecase;
+package com.example.taskMaster.application.usecase.concreteUseCases;
 
 import com.example.taskMaster.application.strategy.ICreateByStrategy;
-import com.example.taskMaster.application.usecase.abstractions.ICreateTask;
-import com.example.taskMaster.application.usecase.creationValidations.ICreationValidation;
+import com.example.taskMaster.application.usecase.abstractionsUseCase.ICreateTask;
+import com.example.taskMaster.application.usecase.creationValidations.validationAbstractions.ICreationValidation;
 import com.example.taskMaster.infra.repository.IRepository;
 
 import java.time.LocalDate;

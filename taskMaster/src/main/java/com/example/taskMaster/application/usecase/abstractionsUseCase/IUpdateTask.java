@@ -1,6 +1,4 @@
-package com.example.taskMaster.application.usecase.abstractions;
-
-import org.springframework.boot.autoconfigure.mail.MailProperties;
+package com.example.taskMaster.application.usecase.abstractionsUseCase;
 
 import java.util.Map;
 import java.util.UUID;

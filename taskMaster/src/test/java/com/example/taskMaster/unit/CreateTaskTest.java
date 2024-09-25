@@ -1,9 +1,9 @@
 package com.example.taskMaster.unit;
 
 import com.example.taskMaster.application.domain.builderPattern.director.DirectorBuilder;
-import com.example.taskMaster.application.usecase.creationValidations.ICreationValidation;
-import com.example.taskMaster.application.usecase.creationValidations.ValidateDate;
-import com.example.taskMaster.application.usecase.creationValidations.CheckFields;
+import com.example.taskMaster.application.usecase.creationValidations.validationAbstractions.ICreationValidation;
+import com.example.taskMaster.application.usecase.creationValidations.concreteValidations.ValidateDate;
+import com.example.taskMaster.application.usecase.creationValidations.concreteValidations.CheckFields;
 import com.example.taskMaster.infra.exceptions.CustomException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

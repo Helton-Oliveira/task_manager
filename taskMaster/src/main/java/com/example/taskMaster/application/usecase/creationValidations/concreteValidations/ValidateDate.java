@@ -1,6 +1,7 @@
-package com.example.taskMaster.application.usecase.creationValidations;
+package com.example.taskMaster.application.usecase.creationValidations.concreteValidations;
 
 import com.example.taskMaster.application.domain.entities.Task;
+import com.example.taskMaster.application.usecase.creationValidations.validationAbstractions.ICreationValidation;
 import com.example.taskMaster.infra.exceptions.CustomException;
 
 
