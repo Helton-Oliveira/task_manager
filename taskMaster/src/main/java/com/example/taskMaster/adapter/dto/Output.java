@@ -15,7 +15,7 @@ public record Output(UUID id,
                      LocalDate dueDate
                      ) {
     public Output(Task task) {
-        this(task.getId(), task.getNameTask(), task.getDescription(), task.getStatus(), task.getPriority(), task.getDueDate())
+        this(task.getId(), task.getNameTask(), task.getDescription(), task.getStatus(), task.getPriority(), task.getDueDate());
     }
 
 }
