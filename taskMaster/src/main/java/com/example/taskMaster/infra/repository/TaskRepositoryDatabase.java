@@ -116,7 +116,6 @@ public class TaskRepositoryDatabase implements IRepository {
     private void chooseTheNewFieldData(PreparedStatement st, Map<String, String> field) throws SQLException {
         if(field.containsKey("duedate")) {
             st.setDate(1, Date.valueOf(field.get("duedate")));
-
         }
 
         if(field.containsKey("status")) {
